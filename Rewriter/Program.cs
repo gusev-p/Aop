@@ -15,7 +15,7 @@ namespace Aop.Rewriter
 		{
 			if (args.Length == 0)
 			{
-				Console.Out.WriteLine("Usage: Elba.Aop.Rewriter.exe -assemblyPath");
+				Console.Out.WriteLine("Usage: Aop.Rewriter.exe -assemblyPath");
 				return -1;
 			}
 			var stopwatch = Stopwatch.StartNew();
