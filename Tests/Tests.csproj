@@ -31,21 +31,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Cecil">
-      <HintPath>..\..\Assemblies\MonoCecil\Mono.Cecil.dll</HintPath>
+      <HintPath>..\Assemblies\Mono.Cecil.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cecil.Pdb, Version=0.9.5.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Assemblies\MonoCecil\Mono.Cecil.Pdb.dll</HintPath>
+    <Reference Include="Mono.Cecil.Pdb">
+      <HintPath>..\Assemblies\Mono.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Rocks">
-      <HintPath>..\..\Assemblies\MonoCecil\Mono.Cecil.Rocks.dll</HintPath>
+      <HintPath>..\Assemblies\Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
-    <Reference Include="Moq, Version=4.0.10827.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\moq4\Source\bin\Debug\Moq.dll</HintPath>
+    <Reference Include="Moq">
+      <HintPath>..\Assemblies\Moq.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>..\..\Assemblies\nunit.framework.dll</HintPath>
+      <HintPath>..\Assemblies\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

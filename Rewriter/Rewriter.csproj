@@ -33,13 +33,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Cecil">
-      <HintPath>..\..\Assemblies\MonoCecil\Mono.Cecil.dll</HintPath>
+      <HintPath>..\Assemblies\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Pdb">
-      <HintPath>..\..\Assemblies\MonoCecil\Mono.Cecil.Pdb.dll</HintPath>
+      <HintPath>..\Assemblies\Mono.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Rocks">
-      <HintPath>..\..\Assemblies\MonoCecil\Mono.Cecil.Rocks.dll</HintPath>
+      <HintPath>..\Assemblies\Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
