@@ -1,6 +1,6 @@
 using System;
 
-namespace Kontur.Elba.Aop.Definitions.ChangeTracking
+namespace Aop.Definitions.ChangeTracking
 {
 	[AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
 	public class TrackChangesAttribute : Attribute

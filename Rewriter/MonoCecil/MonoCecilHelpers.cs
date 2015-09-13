@@ -9,7 +9,7 @@ using Mono.Cecil.Pdb;
 using Mono.Collections.Generic;
 using ICustomAttributeProvider = Mono.Cecil.ICustomAttributeProvider;
 
-namespace Kontur.Elba.Aop.Rewriter.MonoCecil
+namespace Aop.Rewriter.MonoCecil
 {
 	public static class MonoCecilHelpers
 	{

@@ -7,8 +7,8 @@
     <ProjectGuid>{8FE53183-C332-4527-B229-A071AB7B622C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kontur.Elba.Aop.Rewriter</RootNamespace>
-    <AssemblyName>Elba.Aop.Rewriter</AssemblyName>
+    <RootNamespace>Aop.Rewriter</RootNamespace>
+    <AssemblyName>Aop.Rewriter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

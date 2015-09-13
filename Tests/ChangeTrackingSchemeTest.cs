@@ -1,11 +1,11 @@
 using System;
 using System.Linq;
-using Kontur.Elba.Aop.Definitions.ChangeTracking;
-using Kontur.Elba.Aop.Rewriter;
-using Kontur.Elba.Aop.Rewriter.ChangeTracking;
+using Aop.Definitions.ChangeTracking;
+using Aop.Rewriter;
+using Aop.Rewriter.ChangeTracking;
 using NUnit.Framework;
 
-namespace Kontur.Elba.Aop.Tests
+namespace Aop.Tests
 {
 	public class ChangeTrackingSchemeTest : RewriterTestBase
 	{

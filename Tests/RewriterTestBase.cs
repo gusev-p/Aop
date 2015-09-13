@@ -1,12 +1,12 @@
 using System;
 using System.Reflection;
-using Kontur.Elba.Aop.Definitions.ChangeTracking;
-using Kontur.Elba.Aop.Rewriter.MonoCecil;
+using Aop.Definitions.ChangeTracking;
+using Aop.Rewriter.MonoCecil;
 using Mono.Cecil;
 using Moq;
 using NUnit.Framework;
 
-namespace Kontur.Elba.Aop.Tests
+namespace Aop.Tests
 {
 	[TestFixture]
 	public abstract class RewriterTestBase

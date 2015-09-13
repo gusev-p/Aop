@@ -1,11 +1,11 @@
 ﻿using System.Linq;
-using Kontur.Elba.Aop.Definitions.ChangeTracking;
-using Kontur.Elba.Aop.Rewriter.ChangeTracking;
-using Kontur.Elba.Aop.Rewriter.MonoCecil;
+using Aop.Definitions.ChangeTracking;
+using Aop.Rewriter.ChangeTracking;
+using Aop.Rewriter.MonoCecil;
 using Moq;
 using NUnit.Framework;
 
-namespace Kontur.Elba.Aop.Tests
+namespace Aop.Tests
 {
 	public abstract class ChangeTrackingTypeWeaverTest : RewriterTestBase
 	{

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Kontur.Elba.Aop.Rewriter.ChangeTracking;
-using Kontur.Elba.Aop.Rewriter.MonoCecil;
+using Aop.Rewriter.ChangeTracking;
+using Aop.Rewriter.MonoCecil;
 using Mono.Cecil;
 
-namespace Kontur.Elba.Aop.Rewriter
+namespace Aop.Rewriter
 {
 	public class Program
 	{
@@ -31,7 +31,7 @@ namespace Kontur.Elba.Aop.Rewriter
 						{
 							"BsonTimestamp"
 						},
-					IsForeignDelegate = r => !r.FullName.StartsWith("Kontur.Elba.")
+					IsForeignDelegate = r => !r.FullName.StartsWith("")
 				});
 			try
 			{

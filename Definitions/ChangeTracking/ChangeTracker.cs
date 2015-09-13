@@ -1,6 +1,6 @@
 using System;
 
-namespace Kontur.Elba.Aop.Definitions.ChangeTracking
+namespace Aop.Definitions.ChangeTracking
 {
 	public class ChangeTracker
 	{

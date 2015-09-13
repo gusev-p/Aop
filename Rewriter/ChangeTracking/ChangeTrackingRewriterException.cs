@@ -1,6 +1,6 @@
 using System;
 
-namespace Kontur.Elba.Aop.Rewriter.ChangeTracking
+namespace Aop.Rewriter.ChangeTracking
 {
 	public class ChangeTrackingRewriterException : Exception
 	{

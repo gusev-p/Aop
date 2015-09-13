@@ -7,8 +7,8 @@
     <ProjectGuid>{9E21F8CC-C010-42CB-9EA4-72E78054CF34}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kontur.Elba.Aop.Tests</RootNamespace>
-    <AssemblyName>Elba.Aop.Tests</AssemblyName>
+    <RootNamespace>Aop.Tests</RootNamespace>
+    <AssemblyName>Aop.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

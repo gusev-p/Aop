@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Kontur.Elba.Aop.Definitions.ChangeTracking;
-using Kontur.Elba.Aop.Rewriter;
-using Kontur.Elba.Aop.Rewriter.ChangeTracking;
-using Kontur.Elba.Aop.Rewriter.MonoCecil;
+using Aop.Definitions.ChangeTracking;
+using Aop.Rewriter;
+using Aop.Rewriter.ChangeTracking;
+using Aop.Rewriter.MonoCecil;
 using Mono.Cecil;
 using Moq;
 using NUnit.Framework;
 
-namespace Kontur.Elba.Aop.Tests
+namespace Aop.Tests
 {
 	//todo не забивать на массивы
 	public abstract class ChangeTrackingRewriterTest : RewriterTestBase
@@ -471,9 +471,9 @@ namespace Kontur.Elba.Aop.Tests
 		{
 			private const string firstCode = @"
 					using System;
-					using Kontur.Elba.Aop.Definitions.ChangeTracking;
+					using Aop.Definitions.ChangeTracking;
 
-					namespace Kontur.Elba.Aop.Tests.TrackerFieldsFromOtherAssembliesMustBeImported
+					namespace Aop.Tests.TrackerFieldsFromOtherAssembliesMustBeImported
 					{
 						[TrackChanges]
 						public class Entity
@@ -486,7 +486,7 @@ namespace Kontur.Elba.Aop.Tests
 			private const string secondCode = @"
 					using System;
 
-					namespace Kontur.Elba.Aop.Tests.TrackerFieldsFromOtherAssembliesMustBeImported
+					namespace Aop.Tests.TrackerFieldsFromOtherAssembliesMustBeImported
 					{						
 						public class Contractor: Entity
 						{
@@ -499,7 +499,7 @@ namespace Kontur.Elba.Aop.Tests
 			{
 				var first = CompileAndRewrite(firstCode, typeof (TrackChangesAttribute).Assembly);
 				var second = CompileAndRewrite(secondCode, typeof (TrackChangesAttribute).Assembly, first);
-				var instance = CreateInstance(second, "Kontur.Elba.Aop.Tests.TrackerFieldsFromOtherAssembliesMustBeImported.Contractor");
+				var instance = CreateInstance(second, "Aop.Tests.TrackerFieldsFromOtherAssembliesMustBeImported.Contractor");
 				AssertTrackable(instance, "Name");
 			}
 		}
@@ -507,7 +507,7 @@ namespace Kontur.Elba.Aop.Tests
 		public class SkipImmutableTypes : ChangeTrackingRewriterTest
 		{
 			private const string firstCode = @"
-					namespace Kontur.Elba.Aop.Tests.SkipImmutableTypes
+					namespace Aop.Tests.SkipImmutableTypes
 					{
 						public class ImmutableName
 						{
@@ -517,9 +517,9 @@ namespace Kontur.Elba.Aop.Tests
 				";
 
 			private const string secondCode = @"
-					using Kontur.Elba.Aop.Definitions.ChangeTracking;
+					using Aop.Definitions.ChangeTracking;
 
-					namespace Kontur.Elba.Aop.Tests.SkipImmutableTypes
+					namespace Aop.Tests.SkipImmutableTypes
 					{						
 						[TrackChanges]
 						public class Contractor
@@ -533,8 +533,8 @@ namespace Kontur.Elba.Aop.Tests
 			{
 				var first = CompileAndRewrite(firstCode, typeof (TrackChangesAttribute).Assembly);
 				var second = CompileAndRewrite(secondCode, new[] {"ImmutableName"}, typeof (TrackChangesAttribute).Assembly, first);
-				var instance = CreateInstance(second, "Kontur.Elba.Aop.Tests.SkipImmutableTypes.Contractor");
-				var immutable = CreateInstance(first, "Kontur.Elba.Aop.Tests.SkipImmutableTypes.ImmutableName");
+				var instance = CreateInstance(second, "Aop.Tests.SkipImmutableTypes.Contractor");
+				var immutable = CreateInstance(first, "Aop.Tests.SkipImmutableTypes.ImmutableName");
 				AttachListenerTo(instance);
 				SetProperty(instance, "Name", immutable);
 				moqListener.Verify(x => x(instance), Times.Once());
@@ -545,9 +545,9 @@ namespace Kontur.Elba.Aop.Tests
 		{
 			private const string grandFatherCode = @"
 					using System;
-					using Kontur.Elba.Aop.Definitions.ChangeTracking;
+					using Aop.Definitions.ChangeTracking;
 
-					namespace Kontur.Elba.Aop.Tests.TrackerFieldFromGrandfather
+					namespace Aop.Tests.TrackerFieldFromGrandfather
 					{
 						[TrackChanges]
 						public class Entity
@@ -560,7 +560,7 @@ namespace Kontur.Elba.Aop.Tests
 			private const string fatherCode = @"
 					using System;
 
-					namespace Kontur.Elba.Aop.Tests.TrackerFieldFromGrandfather
+					namespace Aop.Tests.TrackerFieldFromGrandfather
 					{						
 						public class OrganizationEntity: Entity
 						{
@@ -571,7 +571,7 @@ namespace Kontur.Elba.Aop.Tests
 			private const string code = @"
 					using System;
 
-					namespace Kontur.Elba.Aop.Tests.TrackerFieldFromGrandfather
+					namespace Aop.Tests.TrackerFieldFromGrandfather
 					{						
 						public class Contractor: OrganizationEntity
 						{
@@ -586,7 +586,7 @@ namespace Kontur.Elba.Aop.Tests
 				var father = CompileAndRewrite(fatherCode, typeof (TrackChangesAttribute).Assembly, grandFather);
 				var assembly = CompileAndRewrite(code, typeof (TrackChangesAttribute).Assembly, grandFather, father);
 
-				var instance = CreateInstance(assembly, "Kontur.Elba.Aop.Tests.TrackerFieldFromGrandfather.Contractor");
+				var instance = CreateInstance(assembly, "Aop.Tests.TrackerFieldFromGrandfather.Contractor");
 				AssertTrackable(instance, "Name");
 			}
 		}
@@ -595,9 +595,9 @@ namespace Kontur.Elba.Aop.Tests
 		{
 			private const string firstCode = @"
 					using System;
-					using Kontur.Elba.Aop.Definitions.ChangeTracking;
+					using Aop.Definitions.ChangeTracking;
 
-					namespace Kontur.Elba.Aop.Tests.ReferencedPropertyFromAnotherAssembly
+					namespace Aop.Tests.ReferencedPropertyFromAnotherAssembly
 					{
 						[TrackChanges]
 						public class AccountInfo
@@ -609,9 +609,9 @@ namespace Kontur.Elba.Aop.Tests
 
 			private const string secondCode = @"
 					using System;
-					using Kontur.Elba.Aop.Definitions.ChangeTracking;
+					using Aop.Definitions.ChangeTracking;
 
-					namespace Kontur.Elba.Aop.Tests.ReferencedPropertyFromAnotherAssembly
+					namespace Aop.Tests.ReferencedPropertyFromAnotherAssembly
 					{
 						[TrackChanges]
 						public class Contractor
@@ -625,8 +625,8 @@ namespace Kontur.Elba.Aop.Tests
 			{
 				var first = CompileAndRewrite(firstCode, typeof (TrackChangesAttribute).Assembly);
 				var second = CompileAndRewrite(secondCode, typeof (TrackChangesAttribute).Assembly, first);
-				var instance = CreateInstance(second, "Kontur.Elba.Aop.Tests.ReferencedPropertyFromAnotherAssembly.Contractor");
-				var account = CreateInstance(first, "Kontur.Elba.Aop.Tests.ReferencedPropertyFromAnotherAssembly.AccountInfo");
+				var instance = CreateInstance(second, "Aop.Tests.ReferencedPropertyFromAnotherAssembly.Contractor");
+				var account = CreateInstance(first, "Aop.Tests.ReferencedPropertyFromAnotherAssembly.AccountInfo");
 				SetProperty(instance, "Account", account);
 				AttachListenerTo(instance);
 				SetProperty(account, "Number", "123");

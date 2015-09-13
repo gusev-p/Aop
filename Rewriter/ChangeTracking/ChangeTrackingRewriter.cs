@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Kontur.Elba.Aop.Definitions.ChangeTracking;
-using Kontur.Elba.Aop.Rewriter.MonoCecil;
+using Aop.Definitions.ChangeTracking;
+using Aop.Rewriter.MonoCecil;
 using Mono.Cecil;
 
-namespace Kontur.Elba.Aop.Rewriter.ChangeTracking
+namespace Aop.Rewriter.ChangeTracking
 {
 	public class ChangeTrackingRewriter
 	{

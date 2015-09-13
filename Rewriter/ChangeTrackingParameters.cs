@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Mono.Cecil;
 
-namespace Kontur.Elba.Aop.Rewriter
+namespace Aop.Rewriter
 {
 	public class ChangeTrackingParameters
 	{

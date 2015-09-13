@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Mono.Cecil;
 
-namespace Kontur.Elba.Aop.Rewriter.MonoCecil
+namespace Aop.Rewriter.MonoCecil
 {
 	public class TypeReferenceEqualityComparer : IEqualityComparer<TypeReference>
 	{
