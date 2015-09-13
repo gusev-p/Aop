@@ -14,26 +14,26 @@ namespace Aop.Rewriter.ChangeTracking
 		private readonly ChangeTrackingParameters parameters;
 		private readonly ISet<string> notTrackableTypeNames;
 
-		private readonly Type[] notTrackableTypes = new[]
-			{
-				typeof (byte),
-				typeof (short),
-				typeof (ushort),
-				typeof (int),
-				typeof (uint),
-				typeof (long),
-				typeof (ulong),
-				typeof (double),
-				typeof (float),
-				typeof (string),
-				typeof (Guid),
-				typeof (bool),
-				typeof (DateTime),
-				typeof (ChangeTracker),
+		private readonly Type[] notTrackableTypes =
+		{
+			typeof (byte),
+			typeof (short),
+			typeof (ushort),
+			typeof (int),
+			typeof (uint),
+			typeof (long),
+			typeof (ulong),
+			typeof (double),
+			typeof (float),
+			typeof (string),
+			typeof (Guid),
+			typeof (bool),
+			typeof (DateTime),
+			typeof (ChangeTracker),
 
-				//что с этим делать, блять?
-				typeof (NameValueCollection)
-			};
+			//что с этим делать, блять?
+			typeof (NameValueCollection)
+		};
 
 		public ChangeTrackingScheme(ChangeTrackingParameters parameters)
 		{

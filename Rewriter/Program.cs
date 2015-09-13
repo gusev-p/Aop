@@ -13,26 +13,29 @@ namespace Aop.Rewriter
 	{
 		public static int Main(string[] args)
 		{
-			if (args.Length == 0)
+			if (args.Length < 2)
 			{
-				Console.Out.WriteLine("Usage: Aop.Rewriter.exe -assemblyPath");
+				Console.Out.WriteLine("Usage: Aop.Rewriter.exe -assemblyPath -assemblyPrefix");
 				return -1;
 			}
 			var stopwatch = Stopwatch.StartNew();
 			var assemblyPath = args[0];
 			if (assemblyPath.StartsWith("-"))
 				assemblyPath = assemblyPath.Substring(1);
+			var assemblyPrefix = args[1];
+			if (assemblyPrefix.StartsWith("-"))
+				assemblyPrefix = assemblyPrefix.Substring(1);
 			var assemblyDefinition = MonoCecilHelpers.LoadAssembly(assemblyPath);
 			var rewriter = new ChangeTrackingRewriter(new ChangeTrackingParameters
+			{
+				Assembly = assemblyDefinition,
+				TypesToProcess = assemblyDefinition.MainModule.GetTypes().ToArray(),
+				ImmutableTypeNames = new HashSet<string>
 				{
-					Assembly = assemblyDefinition,
-					TypesToProcess = assemblyDefinition.MainModule.GetTypes().ToArray(),
-					ImmutableTypeNames = new HashSet<string>
-						{
-							"BsonTimestamp"
-						},
-					IsForeignDelegate = r => !r.FullName.StartsWith("")
-				});
+					"BsonTimestamp"
+				},
+				IsForeignDelegate = r => !r.FullName.StartsWith(assemblyPrefix)
+			});
 			try
 			{
 				rewriter.Rewrite();
